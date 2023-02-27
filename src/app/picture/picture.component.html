@@ -1,6 +1,9 @@
 <input type="file" (change)="onFileSelected($event)">
-<button (click)="copyImage()">Copy Image</button>
 
-<div>
+<!-- <div>
     <img [src]="imageSrc" *ngIf="imageSrc" #selectedImage>
+</div> -->
+
+<div *ngFor="let img of imagesLists" class="p-5">
+    <app-image [img]="img" (deleteImgId)="deleteImg($event)"></app-image>
 </div>
