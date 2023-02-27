@@ -1,0 +1,6 @@
+<input type="file" (change)="onFileSelected($event)">
+<button (click)="copyImage()">Copy Image</button>
+
+<div>
+    <img [src]="imageSrc" *ngIf="imageSrc" #selectedImage>
+</div>
