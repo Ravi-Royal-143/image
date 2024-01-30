@@ -1,3 +1,3 @@
 export const environment = {
-    baseURL: 'https://momentous-verdant-sofa.glitch.me/'
+    baseURL: 'https://automatic-healthy-spectacles.glitch.me/'
 };
