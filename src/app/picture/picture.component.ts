@@ -58,14 +58,14 @@ export class PictureComponent implements OnInit {
         // }
         const extension = singleImg.split('.').pop();
         const count = singleImg.split(`.${extension}`).length;
-        const imgName = count === 2 ?
-          singleImg.split('-').slice(0, -1).join('-') :
-          singleImg.split(`.`).slice(0, -2).join(''); //this is used when we directly upload from postman
+        // const imgName = count === 2 ?
+        //   singleImg.split('-').slice(0, -1).join('-') :
+        //   singleImg.split(`.`).slice(0, -2).join(''); //this is used when we directly upload from postman
         return {
           imagePath: `${environment.baseURL}/file/${singleImg}`,
-          imageNamewithExtension: `${imgName}.${extension}`,
+          imageNamewithExtension: `${singleImg}.${extension}`,
           fullpath: environment.baseURL + '/file/' + singleImg,
-          imgName: imgName,
+          imgName: singleImg,
           filePath: singleImg
         };
       })
