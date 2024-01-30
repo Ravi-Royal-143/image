@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { PictureService } from './picture.service';
@@ -13,6 +13,16 @@ import { ImageComponent } from './image/image.component';
   styleUrls: ['./picture.component.scss']
 })
 export class PictureComponent implements OnInit {
+
+  @HostListener('paste', ['$event'])
+  onPaste(e: ClipboardEvent): void {
+    const clipboardData = e.clipboardData || (window as any).clipboardData;
+    const items: DataTransferItem[] = Array.from(clipboardData.items);
+    const imageData = items.find(x => /image/i.test(x.type));
+    if (imageData) {
+      this.saveFile(imageData.getAsFile());
+    }
+  }
 
   imageSrc: string;
   imagesLists: any[] = []
