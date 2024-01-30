@@ -52,10 +52,22 @@ export class PictureComponent implements OnInit {
   fetchImgs() {
     this.pictureService.getImages().subscribe((data: any) => {
       this.imagesLists = data.map((singleImg: string) => {
+        // return {
+        //   fullpath: environment.baseURL + '/file/' + singleImg,
+        //   imgName: singleImg
+        // }
+        const extension = singleImg.split('.').pop();
+        const count = singleImg.split(`.${extension}`).length;
+        const imgName = count === 2 ?
+          singleImg.split('-').slice(0, -1).join('-') :
+          singleImg.split(`.`).slice(0, -2).join(''); //this is used when we directly upload from postman
         return {
+          imagePath: `${environment.baseURL}/file/${singleImg}`,
+          imageNamewithExtension: `${imgName}.${extension}`,
           fullpath: environment.baseURL + '/file/' + singleImg,
-          imgName: singleImg
-        }
+          imgName: imgName,
+          filePath: singleImg
+        };
       })
     });
   }
