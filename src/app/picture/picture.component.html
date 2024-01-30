@@ -6,6 +6,6 @@
 
 <div *ngFor="let imageDetail of imagesLists" class="p-5">
     <a class="pi pi-download" [download]="imageDetail.imageNamewithExtension"
-        [href]="imageDetail.imagePath">imageDetail.imgName</a>
+        [href]="imageDetail.imagePath">{{imageDetail.imgName}}</a>
     <app-image [img]="imageDetail" (deleteImgId)="deleteImg($event)"></app-image>
 </div>
